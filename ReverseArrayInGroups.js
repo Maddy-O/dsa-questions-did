@@ -24,3 +24,108 @@
 
 //  the first approach coming in my mind is to traverse the whole arr while keeping the count
 // if the count is equal to given number then reverse it till the count
+
+
+// function reverseInGroups(arr, k) {
+
+//     let a = 0;
+//     let n = arr.length;
+//     let left = 0;
+//     let right = k - 1;
+
+//     while (a < n) {
+//         if ((((a + 1) % k) === 0) && ((a + k) <= arr.length)) {
+//             // console.log("..................", a);
+//             // console.log("11111111111111111111", right);
+//             right = a + 3;
+//         }
+//         // else
+//         else {
+//             if ((a + k) > arr.length) {
+//                 // console.log("222222", right)
+//                 // right = k - 1;
+//                 // let t = arr[a];
+//                 // arr[a] = arr[right];
+//                 // arr[right] = t;
+//                 // right--;
+//             }
+//             let t = arr[a];
+//             arr[a] = arr[right];
+//             arr[right] = t;
+//             right--;
+//         }
+//         a++;
+//     }
+//     return arr;
+// };
+
+// console.log(reverseInGroups([1, 2, 3, 4, 5], 3));
+// console.log(reverseInGroups([1, 2, 3, 4, 5, 6, 7, 8], 3));
+// console.log(reverseInGroups([5, 6, 8, 9], 5));
+
+
+// function reverseInGroups(arr, k) {
+
+//     let n = arr.length;
+
+//     for (let i = 0; i < n; i += k) {
+//         let left = i;
+
+// to handle case when k is not
+// multiple of n
+// let right = Math.min(i + k - 1, n - 1);
+// console.log(left, "aaaaaaaaaaaa", right)
+// reverse the sub-array [left, right]
+// while (left < right) {
+
+//     // Swap elements
+//     [arr[left], arr[right]] = [arr[right], arr[left]];
+//     left += 1;
+//     right -= 1;
+// }
+//     }
+//     return arr;
+// }
+
+// Driver Code
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+// let k = 3;
+// let arr1 = reverseInGroups(arr, k);
+// console.log(arr1.join(" "));
+
+// reverseInGroups(arr, k);
+
+
+
+
+
+
+
+
+
+
+function reverseInGroups(arr, k) {
+
+    for (let i = 0; i < arr.length; i += k) {
+
+        let left = i;
+
+        let right = Math.min(i + k - 1, arr.length - 1);
+
+        while (left < right) {
+
+            [arr[left], arr[right]] = [arr[right], arr[left]];
+            left++;
+            right--;
+
+        }
+
+
+    }
+
+    return arr;
+};
+
+console.log(reverseInGroups([1, 2, 3, 4, 5], 3));
+console.log(reverseInGroups([1, 2, 3, 4, 5, 6, 7, 8], 3));
+console.log(reverseInGroups([5, 6, 8, 9], 5));
