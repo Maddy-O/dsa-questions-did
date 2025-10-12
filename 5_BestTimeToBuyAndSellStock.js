@@ -31,7 +31,12 @@ let maxProfit = function (prices) {
     for (let i = 1; i < prices.length; i++) {
 
         min = Math.min(min, prices[i]);
-        res = Math.max(res, prices[i] - min);
+
+        if (prices[i] > min) {
+
+            res = Math.max(res, prices[i] - min);
+
+        }
 
     }
 
